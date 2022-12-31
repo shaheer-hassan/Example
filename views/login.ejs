@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="./css/main.css">
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			$( "#form" ).submit(function(event) {
+				event.preventDefault();
+
+				$.ajax({
+					type: 'POST',
+					url: '/login',
+					data: $('#form').serialize(),
+					dataType: "json",
+					success: function(response){
+						//alert("a");
+						//console.log(response.Success);
+						$('#form')[0].reset();
+
+						document.getElementById("check").innerHTML=response.Success;
+         					//ADD THIS CODE
+         					setTimeout(function(){
+         						document.getElementById("check").innerHTML="";
+         					},3000);
+         					if (response.Success=="Success!") {
+         						document.getElementById("aa").click();
+         					};
+         				},
+         				error: function() {
+         				}
+         			})
+			});
+
+		});
+	</script>
+</head>
+<body>
+	<div class="col-md-4 col-md-offset-4">
+		<div>
+			<p style="font-style: italic; font-size: 35px; font-weight: bolder" >Login</p>
+		</div>
+		<div class="form-group">
+			<form id="form" method="post" >
+				<input style="border-radius: 13px" type="text" name="email" placeholder="Enter your email" required="" class="form-control"><br/>
+				<input style="border-radius: 13px" type="password" name="password" placeholder="Enter password" required="" class="form-control"><br/>
+				<input style="
+				border-radius: 50px;
+				width: 125px;
+				background-color: palevioletred;
+			  " type="submit" value="Login" class="btn btn-primary">
+			</form>
+		</div>
+		<div class="mssg bg-danger">
+			<span id="check" ></span>
+		</div>
+		<div id="LangTable"><a href="/profile" id="aa"></a>
+		</div>
+		<div><span style="font-size: 16px; color: black; font-style: italic">Did you forget password?</span><a style="margin-left: 12px; color: blue" href="/login" href="/forgetpass">Click here</a>
+		<div style="margin-top: 10px;"><span style="font-size: 16px; color: black; font-style: italic;">Create a new Account?</span><a style="margin-left: 12px; color: blue" href="/login" href="/">Register here</a>
+
+		</div>
+		
+	</div>
+</body>
+</html>

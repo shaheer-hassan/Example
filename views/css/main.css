@@ -1,0 +1,27 @@
+/*body,
+ table,
+    thead,
+    tr,
+    tbody,
+    th,
+    td {
+        text-align: center;
+    }*/
+body {
+  text-align: left;
+  margin-right: 300px;
+  background-color: rgba(110, 150, 130, 0.5);
+}
+p {
+  margin-top: 100px;
+  font-size: 30px;
+}
+input {
+  text-align: left;
+  margin-right: 100px;
+}
+.mssg {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
